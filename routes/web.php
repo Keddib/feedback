@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// Route::get('/', [TaskController::class, 'index'])->name('task');
+Route::get('/', [HomeController::class, 'create'])->name('Home');
+Route::get('/comment', [CommentController::class, 'store'])->name('Store');
