@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FeedsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +16,17 @@ use App\Http\Controllers\CommentController;
 */
 
 
-// Route::get('/', [TaskController::class, 'index'])->name('task');
-Route::get('/', [HomeController::class, 'create'])->name('Home');
-Route::get('/comment', [CommentController::class, 'store'])->name('Store');
+Route::get('/', [HomeController::class, 'index'])->name('Home');
+
+Route::prefix('feeds')->group( function() {
+
+	Route::get('/', [FeedsController::class, 'index'])->name('Feeds');
+
+	Route::get('/create', [FeedsController::class, 'create'])->name('Create');
+
+	Route::post('/', [FeedsController::class, 'store'])->name('Store'); // @csrf
+});
+
+Route::get('error', function() {
+	return response()->make('Hello error', 502, ['X-Eddib' => 'XXXxxxXXX']);
+});

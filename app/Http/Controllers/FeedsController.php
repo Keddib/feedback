@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CommentController extends Controller
+class FeedsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        return 'feeds';
     }
 
     /**
@@ -23,7 +23,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        return redirect('feeds');
     }
 
     /**
@@ -34,7 +34,8 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Task::create(request()->only(['title', 'description']));
+        return redirect('feeds');
     }
 
     /**
