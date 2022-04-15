@@ -1,7 +1,15 @@
 module.exports = {
-  content: [],
+  content: [
+    "./resources/**/*.blade.php",
+    "./resources/**/*.js",
+  ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'main-blue': '#0079D3',
+        'main-grey': '#DAE0E6'
+      },
+    },
   },
   plugins: [],
 }
