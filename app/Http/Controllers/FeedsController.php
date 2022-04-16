@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Feed;
 
 class FeedsController extends Controller
 {
@@ -13,7 +14,8 @@ class FeedsController extends Controller
      */
     public function index()
     {
-        return 'feeds';
+        $feeds = Feed::all();
+        return view('feeds')->with(['feeds'=> $feeds]);
     }
 
     /**
@@ -23,7 +25,7 @@ class FeedsController extends Controller
      */
     public function create()
     {
-        return redirect('feeds');
+        return view('create');
     }
 
     /**
@@ -34,7 +36,10 @@ class FeedsController extends Controller
      */
     public function store(Request $request)
     {
-        Task::create(request()->only(['title', 'description']));
+        $feed = new Feed();
+        $feed->nickname = request('nickname');
+        $feed->text = request('text');
+        $feed->save();
         return redirect('feeds');
     }
 
