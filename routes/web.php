@@ -16,15 +16,15 @@ use App\Http\Controllers\FeedsController;
 */
 
 
-Route::get('/', [HomeController::class, 'index'])->name('Home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('feeds')->group( function() {
 
-	Route::get('/', [FeedsController::class, 'index'])->name('Feeds');
+	Route::get('/', [FeedsController::class, 'index'])->name('feeds');
 
-	Route::get('/create', [FeedsController::class, 'create'])->name('Create');
+	Route::get('/create', [FeedsController::class, 'create'])->name('create');
 
-	Route::post('/', [FeedsController::class, 'store'])->name('Store'); // @csrf
+	Route::post('/', [FeedsController::class, 'store'])->name('store'); // @csrf
 });
 
 Route::get('error', function() {
