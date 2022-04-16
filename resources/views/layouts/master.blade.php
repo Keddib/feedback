@@ -10,7 +10,7 @@
 
       @yield('header')
 
-      <div class="content bg-white">
+      <div class="content">
 
         @yield('content')
 
